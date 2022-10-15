@@ -7,7 +7,7 @@ li = []
 
 #  0 ,1, 2, 3 -> pop() index
 
-# 1 - 10 
+# 1 - 10
 
 string = ['Jake', 'Snowy', 'Spike', 'Oggy', 'Apple']
 
@@ -27,7 +27,10 @@ var = list(var)
 # var.pop(4)
 
 while True:
-
+    var = input('Enter 1: ')
+    var = int(var)
+    if var == 1:
+        break
 
 
 
