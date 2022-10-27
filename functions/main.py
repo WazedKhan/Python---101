@@ -11,6 +11,17 @@ def:     	     The keyword that informs Python that a function is being defined
 <parameters>:	 An optional, comma-separated list of parameters that may be passed to the function
 :	Punctuation that denotes the end of the Python function header (the name and parameter list)
 """
+# Creating a Function
+# In Python a function is defined using the def keyword:
+
+def my_function():
+    print("Hello from a function")
+
+# Calling a Function
+
+my_function()
+
+# Arguments
 
 # Default Parameters
 

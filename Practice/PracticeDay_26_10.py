@@ -1,4 +1,5 @@
 # create a variable called color with an appropriate value on the line below
+color = 'vule'
 # (Remember, strings in Python must be enclosed in 'single' or "double" quotes)
 
 
@@ -18,19 +19,26 @@ Here is the table of available arithmetic operations:
 | a ** b   | Exponentiation | a raised to the power of b                     |
 | -a       | Negation       | The negative of a                              | """
 
+diameter = 10
+pi = 3.1416
 
 # Create a variable called 'radius' equal to half the diameter
-
-# Create a variable called 'area', using the formula( pi x radius^2 ) for the area of a circle: pi times the radius squared
-
+radius = diameter // 2
+# Create a variable called 'area', using the formula(pi x radius^2) for the area of a circle: pi times the radius squared
+area = pi*(radius**2)
 # Swap value of a with b
+
 a = 10
 b = 20
-# hint 1: মনে করুন আপনার দুটি গ্লাস কোক এবং পেপসি ভর্তি আছে, আপনি যদি কোকের গ্লাসে পেপসি এবং পেপসির গ্লাসে কোক রাখতে চান তবে আপনি কী করতে পারেন ?
-#       : Think of yourself having two glasses full of Coke and Pepsi, What can you do if you want to put Pepsi in Coke's glass and Coke in Pepsi's glass?
 
-# hint 2: আপনি অন্য গ্লাস ব্যবহার করতে পারেন
-# hint 3: আপনি আরেকটি নতুন গ্লাসে পেপসি রাখতে পারেন তারপর পেপসির গ্লাসে কোক রাখুন তারপর পেপসিটিকে কোকের গ্লাসে রাখুন।
+# c = a
+# a = b
+# b = c
+
+a, b = b, a
+
+# print(a)
+# print(b)
 
 
 # Given a list and target value find if the target value exists in the list if exists print the index number of the value,
@@ -39,4 +47,24 @@ b = 20
 cards = [13, 11, 10, 7, 4, 3, 1, 0]
 query = 7
 output = 3
+
+
+# index = 0
+
+# for i in cards:
+#     if i == query:
+#         print(index)
+#     else:
+#         print("the target didn't matched")
+#     index += 1
+
+
+# for i in range(len(cards)):
+#     if cards[i] == query:
+#         print(i)
+
+
+# for index, value in enumerate(cards):
+#     if value == query:
+#         print(index)
 
