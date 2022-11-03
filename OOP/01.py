@@ -58,7 +58,7 @@ class Dog:
 class Dog:
     pass
 
-Dog() #Creating a new object from a class is called instantiating an object.
+a = Dog() #Creating a new object from a class is called instantiating an object.
 
-print(Dog())
+print(a)
 
