@@ -2,3 +2,16 @@
 {% block p-title %}
 <h1>Create Category Form </h1>
 {% endblock p-title %}
+{% block content %}
+<div class="container">
+    <form method="post" action={% url 'category-create' %}>
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="exampleInputEmail1">Category Name</label>
+          <input type="name" name="category" class="form-control" placeholder="Enter Category Name">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    </div>
+{% endblock content %}
