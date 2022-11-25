@@ -17,5 +17,5 @@ def create_category(request):
             user=request.user
         )
         return redirect('category-list')
-    
+
     return render(request, 'category-create.html')
