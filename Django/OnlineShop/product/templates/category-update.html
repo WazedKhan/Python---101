@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 {% block p-title %}
-<h1>Create Category Form </h1>
+<h1>Update Category</h1>
 {% endblock p-title %}
 {% block content %}
 <div class="container">
-    <form method="post" action={% url 'category-create' %}>
+    <form method="post" action= {% url 'category-update' val.id %}>
         {% csrf_token %}
-        {% comment %} <div class="form-group">
+        <div class="form-group">
           <label for="exampleInputEmail1">Category Name</label>
-          <input type="name" name="category" class="form-control" placeholder="Enter Category Name">
+          <input type="name" name="category" class="form-control" placeholder="Enter Category Name" value="{{ val }}">
         </div>
-        <br> {% endcomment %}
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>

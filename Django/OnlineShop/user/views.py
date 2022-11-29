@@ -3,8 +3,10 @@ from django.http import HttpResponse
 from django.contrib import messages
 from user.forms import UserRegisterForm
 
+
 def account(request):
     return HttpResponse('')
+
 
 def registration(request):
 
@@ -17,6 +19,4 @@ def registration(request):
         else:
             messages.error(request, f'Couldnt created the account')
     form = UserRegisterForm()
-    return render(request, 'registration.html', {'form':form})
-
-
+    return render(request, 'registration.html', {'form': form})

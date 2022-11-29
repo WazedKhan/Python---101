@@ -18,6 +18,7 @@
                 <tr>
                     <td> {{item.name}} </td>
                     <td>{{item.user}}</td>
+                    <td><a href="{% url 'category-update' item.id %}">Update</a></td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 from product.models import Category
 
@@ -19,3 +21,12 @@ def create_category(request):
         return redirect('category-list')
 
     return render(request, 'category-create.html')
+
+
+def category_update(request, id):
+    data = Category.objects.get(id = id)
+    if request.method == 'POST':
+        data.name = request.POST.get('category')
+        data.save()
+        return redirect('category-list')
+    return render(request, 'category-update.html', {'val': data})
