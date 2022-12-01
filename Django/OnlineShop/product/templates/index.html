@@ -11,6 +11,7 @@
             <tr>
                 <th>Category Name</th>
                 <th>Created By</th>
+                <th>Options</th>
             </tr>
         </thead>
         <tbody>
@@ -18,6 +19,10 @@
                 <tr>
                     <td> {{item.name}} </td>
                     <td>{{item.user}}</td>
+                    <td>
+                    <a class="btn btn-warning" href={% url 'category-update' item.id %}>Update</a>
+                    <a class="btn btn-danger" href="">Delete</a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
