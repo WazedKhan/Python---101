@@ -19,3 +19,4 @@ def create_category(request):
         return redirect('category-list')
 
     return render(request, 'category-create.html')
+
