@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
-from django.http import HttpResponse
+from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView
 
-from product.models import Category
+from product.models import Category, Product
 
 # Create your views here.
 
@@ -12,6 +13,7 @@ def index(request):
     context = {'data': category}
     return render(request, 'index.html', context)
 
+@login_required
 def create_category(request):
     if request.method == "POST":
         Category.objects.create(
@@ -30,3 +32,17 @@ def category_update(request, id):
         data.save()
         return redirect('category-list')
     return render(request, 'category-update.html', {'val': data})
+
+def category_delete(request, id):
+    category = Category.objects.get(id = id)
+    category.delete()
+    return redirect('category-list')
+
+class ProductListView(ListView):
+    model = Product
+    context_object_name = 'products'
+    template_name = 'product-list.html'
+
+    # def get_queryset(self):
+    #     return self.model.objects.filter(in_stock=True)
+

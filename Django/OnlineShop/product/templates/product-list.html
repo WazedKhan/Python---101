@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block p-title %}
+    <h1>Product List</h1>
+{% endblock p-title %}
+
+{% block content %}
+    <a class="btn btn-primary" href="{% url 'category-create' %}" role="button"> Create Category</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Prduct Name</th>
+                <th>Prduct Price</th>
+                <th>Prduct Category</th>
+                <th>Created By</th>
+                <th>Created At</th>
+                <th>Updated at</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in products %}
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.price}} TK</td>
+                    <td>{{item.category}}</td>
+                    <td>{{item.created_by}}</td>
+                    <td>{{item.created_at}}</td>
+                    <td>{{item.updated_at}}</td>
+
+                    {% if item.in_stock %}
+                    <td>In Stock</td>
+                    {% else %}
+                    <td>Out of Stock</td>
+                    {% endif %}
+                    <td>
+                        <a href="{% url 'category-update' item.id %}">Update</a>
+                        <a href="{% url 'category-delete' item.id %}">Delete</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
