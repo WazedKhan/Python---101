@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView, CreateView
 
 from product.models import Category, Product
 
@@ -46,3 +47,13 @@ class ProductListView(ListView):
     # def get_queryset(self):
     #     return self.model.objects.filter(in_stock=True)
 
+class ProductDetailView(DetailView):
+    model = Product
+    context_object_name = 'product'
+    template_name = 'product-detail.html'
+
+class ProductCreateView(CreateView):
+    model = Product
+    fields = ['name', 'price']
+    template_name = 'product-create.html'
+    success_url = reverse_lazy('product-list')
