@@ -36,6 +36,11 @@
                   <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
 
                   <button class="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
+
+                  {% if request.GET.next %}
+                  <input type="hidden", name="next" value=" {{ request.GET.next }} ">
+                  {% endif %}
+                  
               </form>
 
               </div>

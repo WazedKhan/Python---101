@@ -4,10 +4,9 @@
 {% endblock p-title %}
 {% block content %}
 <div class="container">
-    <form method="post" action={% url 'category-create' %}>
+    <form method="post">
         {% csrf_token %}
         {{ form }}
-        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     </div>

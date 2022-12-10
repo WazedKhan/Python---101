@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from user.forms import UserRegisterForm
@@ -30,7 +31,9 @@ def login_view(request):
         )
         if user is not None:
             login(request, user)
-            return redirect('category-list')
+            if request.POST.get('next'):
+                return redirect(request.POST.get('next').strip())
+            else: return redirect('product-list')
     return render(request, 'login.html')
 
 def logout_view(request):

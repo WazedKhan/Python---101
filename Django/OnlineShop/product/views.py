@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 
 from product.models import Category, Product
 
@@ -52,8 +53,15 @@ class ProductDetailView(DetailView):
     context_object_name = 'product'
     template_name = 'product-detail.html'
 
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
-    fields = ['name', 'price']
+    fields = ['name', 'price', 'category']
     template_name = 'product-create.html'
+    success_url = reverse_lazy('product-list')
+
+
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
+    model = Product
+    fields = ['name', 'price', 'category']
+    template_name = 'product-update.html'
     success_url = reverse_lazy('product-list')
