@@ -17,7 +17,7 @@
             {% for item in data %}
                 <tr>
                     <td> {{item.name}} </td>
-                    <td>{{item.user}}</td>
+                    <td>{{item.user}} - <img src=" {{ item.user.profile.image.url }} " class="rounded" width="50" height="50"></td>
                     <td>
                         <a href="{% url 'category-update' item.id %}">Update</a>
                         <a href="{% url 'category-delete' item.id %}">Delete</a>
