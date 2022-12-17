@@ -12,6 +12,7 @@
                 <th>Prduct Name</th>
                 <th>Prduct Price</th>
                 <th>Prduct Category</th>
+                <th>Image</th>
                 <th>Created By</th>
                 <th>Created At</th>
                 <th>Updated at</th>
@@ -24,6 +25,7 @@
                     <td> <a href={% url 'product-detail' item.pk %}>{{item.name}}</a> </td>
                     <td>{{item.price}} TK</td>
                     <td>{{item.category}}</td>
+                    <td><img src=" {{item.image.url}} " alt="alt image" width="40", height="40" class="rounded-circle"></td>
                     <td>{{item.created_by}}</td>
                     <td>{{item.created_at}}</td>
                     <td>{{item.updated_at}}</td>

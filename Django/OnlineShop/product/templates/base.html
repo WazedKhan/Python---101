@@ -104,6 +104,7 @@
 </header>
 
 <div class="container-fluid">
+
   <div class="row">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="position-sticky pt-3 sidebar-sticky">
@@ -178,12 +179,27 @@
               Logout
             </a>
           </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href={% url 'registration' %}>
+              <span data-feather="file-text" class="align-text-bottom"></span>
+              Register
+            </a>
+          </li>
           {% endif %}
         </ul>
       </div>
     </nav>
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    </br>
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            {% endif %} 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         {% block p-title %}
 

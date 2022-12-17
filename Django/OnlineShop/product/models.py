@@ -20,6 +20,10 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    image = models.ImageField(
+        upload_to="product_image/", default="default.png",
+        blank=True, null=True
+        )
 
     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     in_stock = models.BooleanField(default=True)

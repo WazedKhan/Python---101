@@ -30,7 +30,9 @@ def login_view(request):
         )
         if user is not None:
             login(request, user)
+            messages.success(request, f'Login successfully')
             return redirect('category-list')
+        messages.error(request, 'Username or Password Invalid')
     return render(request, 'login.html')
 
 def logout_view(request):
