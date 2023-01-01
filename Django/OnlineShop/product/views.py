@@ -73,11 +73,15 @@ def add_cart(request):
         quantity = request.POST.get('quantity')
         product = Product.objects.get(id=product_id)
         cart.add(product, quantity)
-        data = Session.objects.get(pk=request.session.session_key)  
-        data = data.get_decoded()
-        print("=========",data)
-        return JsonResponse({"ok":data})
+        return redirect('product-list')
 
 def cart_list(request):
     cart = Cart(request)
+
     return render(request, 'cart_list.html', {'cart':cart})
+
+def delete_cart_item(request, id):
+    cart = Cart(request)
+    product = Product.objects.get(id=id)
+    cart.remove(product.id)
+    return redirect('cart-list')

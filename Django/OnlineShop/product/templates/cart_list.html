@@ -17,7 +17,7 @@
                 <div class="d-flex justify-content-between align-items-center mb-4">
                   <div>
                     <p class="mb-1">Shopping cart</p>
-                    <p class="mb-0">You have 4 items in your cart</p>
+                    <p class="mb-0">You have {{ cart|length }} items in your cart</p>
                   </div>
                   <div>
                     <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!"
@@ -26,10 +26,12 @@
                 </div>
 
                 <div class="card mb-3">
-                
-                {% for product in cart %}  
+
+
                   <div class="card-body">
+                    {% for product in cart %}
                     <div class="d-flex justify-content-between">
+
                       <div class="d-flex flex-row align-items-center">
                         <div>
                           <img
@@ -50,10 +52,13 @@
                         </div>
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                       </div>
+
                     </div>
+                    <hr>
+                    {% endfor %}
                   </div>
                 </div>
-                {% endfor %}
+
                 </div>
 
               <div class="col-lg-5">
@@ -111,7 +116,7 @@
 
                     <div class="d-flex justify-content-between">
                       <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">$4798.00</p>
+                      <p class="mb-2">BDT {{cart.total_price}}</p>
                     </div>
 
                     <div class="d-flex justify-content-between">
@@ -121,12 +126,11 @@
 
                     <div class="d-flex justify-content-between mb-4">
                       <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">$4818.00</p>
+                      <p class="mb-2">BDT {{cart.final_price}}</p>
                     </div>
 
                     <button type="button" class="btn btn-info btn-block btn-lg">
                       <div class="d-flex justify-content-between">
-                        <span>$4818.00</span>
                         <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
                       </div>
                     </button>
