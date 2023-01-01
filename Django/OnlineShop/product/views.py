@@ -5,8 +5,13 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.sessions.models import Session
+
+from django.http import JsonResponse
 
 from product.models import Category, Product
+
+from .cart import Cart
 
 # Create your views here.
 
@@ -58,3 +63,21 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
     fields = ['name', 'price', 'category','created_by', 'image']
     template_name = 'product-create.html'
     success_url = reverse_lazy('product-list')
+
+"""==============================Cart Session========================================="""
+
+def add_cart(request):
+    cart = Cart(request)
+    if request.method == "POST":
+        product_id = request.POST.get('product_id')
+        quantity = request.POST.get('quantity')
+        product = Product.objects.get(id=product_id)
+        cart.add(product, quantity)
+        data = Session.objects.get(pk=request.session.session_key)  
+        data = data.get_decoded()
+        print("=========",data)
+        return JsonResponse({"ok":data})
+
+def cart_list(request):
+    cart = Cart(request)
+    return render(request, 'cart_list.html', {'cart':cart})
